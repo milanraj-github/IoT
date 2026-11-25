@@ -1,0 +1,12 @@
+void setup() {
+  pinMode(11, OUTPUT);
+}
+
+void loop() {
+  // Turn ON relay
+  digitalWrite(11, HIGH);
+  delay(2000); // wait 2 seconds
+  // Turn OFF relay
+  digitalWrite(11, LOW);
+  delay(2000); // wait 2 seconds
+}
