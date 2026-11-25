@@ -1,0 +1,38 @@
+Program
+Copy
+#include <Keypad.h>
+
+// Define number of rows and columns for 4x3 Keypad
+const byte ROWS = 4; // four rows
+const byte COLS = 3; // three columns
+
+// Define the key map (layout of the keypad)
+char keys[ROWS][COLS] = {
+  {'1','2','3'},
+  {'4','5','6'},
+  {'7','8','9'},
+  {'*','0','#'}
+};
+
+// Connect keypad ROW0, ROW1, ROW2, ROW3 -> Arduino pins
+byte rowPins[ROWS] = {9, 8, 7, 6};
+
+// Connect keypad COL0, COL1, COL2 -> Arduino pins
+byte colPins[COLS] = {5, 4, 3};
+
+// Create keypad object
+Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("Press keys on keypad...");
+}
+
+void loop() {
+  char key = keypad.getKey(); // get the key pressed
+
+  if (key) { // If a key is pressed
+    Serial.print("Key Pressed: ");
+    Serial.println(key);
+  }
+}
